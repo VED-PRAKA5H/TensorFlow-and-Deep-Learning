@@ -36,6 +36,7 @@ If you can build a simple rule-based system that doesn't require machine learnin
 ## Deep learning Vs Machine learning
 * Traditional ML algorithes have typically performed best on structured data (excel spreadsheet/ google sheet).
 * Where DL perform best on unstructured data like tweets, sound waves, webpage.
+  
 | Structured data         | Unstructured data (using Tensor Flow)  |
 |-------------------------|-----------------------------|
 | Random Forest           | Neural Networks                      |
