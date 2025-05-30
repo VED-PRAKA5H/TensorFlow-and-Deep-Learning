@@ -4,7 +4,7 @@
   - regression (predicting a number) and
   - classification (predicting if something is one thing or another).
 
-# Fundamental 1.1: Intuition
+# 1.1: Fundamental - Intuition
 ## What is a `deep learning (DL)`?
 A type of machine learning based on artificial neural networks in which multiple layers of processing are used to extracti progressively higher level features from data.\
 DL is subset of ML. And ML is subset of AI.
@@ -36,6 +36,7 @@ If you can build a simple rule-based system that doesn't require machine learnin
 ## Deep learning Vs Machine learning
 * Traditional ML algorithes have typically performed best on structured data (excel spreadsheet/ google sheet).
 * Where DL perform best on unstructured data like tweets, sound waves, webpage.
+
 | Structured data         | Unstructured data (using Tensor Flow)  |
 |-------------------------|-----------------------------|
 | Random Forest           | Neural Networks                      |
@@ -106,4 +107,51 @@ GPUs and TPUs are essential for training deep learning models efficiently, while
 
 ### What is Tensor
 A **tensor** is the fundamental data structure used in machine learning frameworks like TensorFlow, PyTorch, and JAX. At its core, you can think of a tensor as a multi-dimensional array.
+
+# 1.2: Neural Network Regression with TensorFlow
+## What is a regression problem?
+A **regression problem** is a type of supervised learning task where the goal is to predict a continuous numerical output based on one or more input features.
+Some example regression problems:
+- How much will this house sell for?
+- How many people will buy this app?
+- How much should I save each week for fuel?
+
+## What we are going to do?
+- Architecture of a neural network regresson model
+- Input shapes and output shapes of a regression model (features and labels)
+- Creating custom data to view and fit
+- Steps in modleling
+  * Creating a model
+  * compiling a model
+  * fitting a model
+  * evaluate a model
+- Different evaluation methods
+- Saving and loading models
+
+
+## How will we do?
+**House price prediction**—you train a model using historical house prices and related features (e.g., square footage, location, number of rooms). The model learns patterns in the data and attempts to predict new house prices as accurately as possible.
+```mermaid
+graph LR
+    A["Raw Data"] --> B["Numerical Encoding"]
+    B --> C(("Trained Model"))
+    C --> E["Predicted Prices"]
+    E --> F["Compare with Actual Prices"]
+
+```
+
+## Architecture of the Regression Problem
+
+| Hyperparameter          | Typical Value                                  |
+|-------------------------|------------------------------------------------|
+| **Input layer shape**   | Same as the number of features                 |
+| **Hidden layer(s)**     | Problem-specific; minimum 1, maximum varies    |
+| **Neurons per layer**   | Depends on complexity, often [32, 64, 128, ...]|
+| **Output layer shape**  | 1 (single numerical output)                    |
+| **Hidden activation**   | ReLU (Rectified Linear Unit)                   |
+| **Output activation**   | Linear (for continuous output)                 |
+| **Loss function**       | MSE or MAE / Huber Loss (combination of MAE/MSE) if outliers|
+| **Optimizer**           | Adam / SGD (Stochastic Gradient Descent)       |
+
+
 
