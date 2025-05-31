@@ -4,6 +4,9 @@
   - regression (predicting a number) and
   - classification (predicting if something is one thing or another).
 
+---
+
+
 # 1.1: Fundamental - Intuition
 ## What is a `deep learning (DL)`?
 A type of machine learning based on artificial neural networks in which multiple layers of processing are used to extracti progressively higher level features from data.\
@@ -156,3 +159,9 @@ graph LR
 
 
 
+## **Example Problem**  
+An example problem has been created using Kaggle's dataset, demonstrating a neural network regression problem on a large dataset.
+
+---
+
+# 1.3:
