@@ -164,4 +164,92 @@ An example problem has been created using Kaggle's dataset, demonstrating a neur
 
 ---
 
-# 1.3:
+# **1.3: Neural Network Classification with TensorFlow**
+
+## **What is Classification?**  
+Classification is a type of supervised learning where we predict classes based on input data (a discrete value), unlike regression, where we predict continuous values.  
+
+> Classification is like teaching a computer to recognize patterns and make decisions.
+
+### **Classification Problem Types**
+- **Binary Classification**  
+  - Example: Determining if an email is spam or not spam.  
+- **Multiclass Classification**  
+  - Example: Classifying images of a cat, rat, or dog.  
+- **Multilabel Classification**  
+  - A single sample can belong to multiple categories (e.g., identifying multiple objects in an image).
+
+## **What We're Going to Cover**
+* Architecture of a neural network classification model.
+* Input shapes and output shapes of a classification problem (features and labels).
+* Creating custom data to visualize and fit.
+* **Steps in modeling:**
+   * Creating, compiling, fitting, and evaluating a model.
+* Different classification evaluation methods.
+* Saving and loading models.
+
+## **Input and Output for the Classification Task**
+> **For an image classification example**
+```mermaid
+graph LR
+X{{"Numerical Encoding
+[[0.31, 0.62, 0.44], 
+ [0.91, 0.27, 0.03],  
+ [0.23, 0.77, 0.07], 
+ ...]"}}
+--> A("Inputs") --> B(("ML Algorithm")) --> C["Outputs"]-->
+Y{{"Predicted Output 
+[[0.97, 0.00, 0.03],
+ [0.81, 0.14, 0.05], 
+ [0.03, 0.07, 0.90],
+ ...]"}}
+```
+
+### **Input Shape**  
+The input shape depends on the number of images and their dimensions. If you're using 100 images of size **64x64** pixels with **3 color channels** (RGB), the input shape would be:
+```python
+(100, 64, 64, 3)  # (num_images/batch_size, height, width, color_channels)
+```
+This represents:
+- `100` images in the dataset  
+- Each image is `64x64` pixels  
+- `3` color channels (Red, Green, Blue)  
+
+### **Output Shape**  
+Since this is a **multiclass** classification problem (each image belongs to exactly **one** of the three categories), the output shape would be:
+```python
+(100, 3)  # (num_images, num_classes)
+```
+This represents:
+- `100` images  
+- `3` possible classes (Cat, Dog, Rat)  
+
+Each output will be a probability distribution over the three classes, such as:
+```python
+[[0.97, 0.00, 0.03],  # This image is most likely a cat
+ [0.11, 0.84, 0.05],  # This image is most likely a dog
+ [0.03, 0.07, 0.90],  # This image is most likely a rat
+ ...]
+```
+Where:
+- The highest probability in each row indicates the predicted class.
+- The model learns to adjust these probabilities as it trains.
+
+
+## **Architecture of a Classification Model**
+| **Hyperparameter**       | **Binary Classification**           | **Multiclass Classification**  |
+|-------------------------|----------------------------------|-----------------------------|
+| **Input layer shape**   | Same as the number of features  | Same as binary classification |
+| **Hidden layer(s)**     | Problem-specific; minimum 1, maximum varies | Same as binary classification |
+| **Neurons per layer**   | Depends on complexity, often [32, 64, 128, ...] | Same as binary classification |
+| **Output layer shape**  | 1 (single numerical output) | 1 per class (e.g., rat, cat, dog) |
+| **Hidden activation**   | ReLU (Rectified Linear Unit) | Same as binary classification |
+| **Output activation**   | Sigmoid (for binary output) | Softmax (for multiclass output) |
+| **Loss function**       | `BinaryCrossentropy` | `CategoricalCrossentropy` |
+| **Optimizer**           | Adam / SGD (Stochastic Gradient Descent) | Same as binary classification |
+
+
+## **Example Problem**  
+An example problem has been done on `Fashion MNIST`, demonstrating a neural network classification problem on a large dataset.
+
+---
