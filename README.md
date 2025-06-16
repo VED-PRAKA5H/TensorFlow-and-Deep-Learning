@@ -196,8 +196,8 @@ X{{"Numerical Encoding
 [[0.31, 0.62, 0.44], 
  [0.91, 0.27, 0.03],  
  [0.23, 0.77, 0.07], 
- ...]"}}
---> A("Inputs") --> B(("ML Algorithm")) --> C["Outputs"]-->
+ ...]"}} --> 
+A("Inputs") --> B(("ML Algorithm")) --> C["Outputs"]-->
 Y{{"Predicted Output 
 [[0.97, 0.00, 0.03],
  [0.81, 0.14, 0.05], 
@@ -253,3 +253,48 @@ Where:
 An example problem has been done on `Fashion MNIST`, demonstrating a neural network classification problem on a large dataset.
 
 ---
+
+# **1.4: Neural Network Text Classification with TensorFlow**
+
+## Example 1: Diabetes Prediction (Feedforward Neural Network)
+
+This example illustrates how a feedforward neural network can be used for a classic classification problem: predicting whether a patient has diabetes based on medical data.
+
+### Feedforward Neural Network
+
+A feedforward neural network is a type of artificial neural network where the connections between the nodes **do not form a cycle**.  Information moves in only one direction, from the input nodes, through the hidden nodes (if any), and to the output nodes. They are the simplest type of artificial neural network.
+
+<img src="https://www.oreilly.com/api/v2/epubs/9781788397872/files/assets/b8af6ca9-6d2d-493e-bdf1-770274883e1b.png" width="400">
+
+
+*   **Key Concepts Covered:**
+    *   **Weights and Biases:**  The parameters that the network learns to make predictions.
+    *   **Forward Propagation:** The process of feeding the input through the network to generate an output.
+    *   **Backpropagation:** The process of calculating the gradients of the loss function with respect to the weights and biases, and using these gradients to update the weights and biases to minimize the loss.
+    *   **Gradient Descent:** The optimization algorithm used to update the weights and biases.
+
+
+## Example 2: Text Classification (Recurrent Neural Network)
+
+This example illustrates how a recurrent neural network (RNN) can be used for text classification, such as sentiment analysis (positive, negative, neutral).
+
+### Definition: Recurrent Neural Network (RNN)
+
+Recurrent Neural Networks (RNNs) are a type of neural network designed to handle sequential data.  Unlike feedforward networks, RNNs have **feedback connections**, allowing information to persist across time steps. This makes them suitable for tasks where the order of data is important, such as natural language processing.
+
+<img src="https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-3-031-27292-9_5/MediaObjects/538387_1_En_5_Fig3_HTML.png" width="400">
+
+The difference between **folded** and **unfolded** RNNs is mainly in how they are represented for understanding and training.
+
+- **Folded RNN**: This is a compact representation where the recurrent connections are shown as loops, making it harder to visualize how information flows over time.
+- **Unfolded RNN**: This expands the network across multiple time steps, showing how the hidden state evolves. This representation is crucial for **backpropagation through time (BPTT)**, as it allows gradients to be computed across different time steps.
+
+In practice, RNNs are trained using the **unfolded** version since it makes gradient calculations easier. However, during inference, the folded representation is sufficient since only the current hidden state needs to be maintained. You can read more about RNN unrolling [here](https://machinelearningmastery.com/rnn-unrolling/).
+>`RNNs` and `FFNNs` differ mainly in handling sequential data. While FFNNs process inputs independently, RNNs retain memory of past inputs through recurrent connections, making them ideal for tasks where order matters. RNNs excel at modeling temporal dependencies, handling variable-length inputs, and sharing parameters efficiently across time steps. They're commonly used in NLP, time series analysis, speech recognition, and video processing. In contrast, FFNNs are better suited for tasks without inherent temporal structure.
+
+#### **Problems with RNNs**:
+* **Exploding Gradients** : This occurs when gradients become very large during backpropagation through time, leading to unstable models and an inability to learn.
+* **Vanishing Gradients** : This happens when gradients become very small, approaching zero, which causes the model to stop updating and learning.
+> **Solutions to RNN Problems**
+* **Gated Recurrent Unit (GRU)** : This unit incorporates "gates" that help manage the flow of information, addressing the vanishing and exploding gradient problems.
+* **Long Short-Term Memory (LSTM) Unit**: Similar to GRUs, LSTMs also use gates (three in this case) to control memory and combat the gradient issues, allowing them to learn long-term dependencies.
